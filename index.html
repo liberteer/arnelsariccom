@@ -3,6 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arnel Šarić Sharan</title>
+<meta name="description" content="Čovjek od glasa, olovke i buke. POPIK, Izvan Svake Kontrole, Pank Trepezarija, Onaj Koji Kuca...">
+<meta property="og:title" content="Arnel Šarić Sharan">
+<meta property="og:description" content="Čovjek od glasa, olovke i buke. POPIK, Izvan Svake Kontrole, Pank Trepezarija, Onaj Koji Kuca...">
+<meta property="og:image" content="https://arnelsaric.com/portrait.jpg">
+<meta property="og:url" content="https://arnelsaric.com">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -16,6 +22,8 @@ body{margin:0;background:#fcfcfa;font-family:system-ui,sans-serif}
 @keyframes ticker-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes blink-cursor{0%,49%{opacity:1}50%,100%{opacity:0}}
 @keyframes link-flash{0%,100%{opacity:1}50%{opacity:0.5}}
+.ticker-link{color:oklch(9% 0 0);text-decoration:none;display:inline-block;pointer-events:auto;padding:0 20px;}
+.ticker-link:hover{color:#e0263b;}
 </style>
 <!-- Privacy-friendly analytics by Plausible -->
 <script async src="https://plausible.io/js/pa-ERoZCx1njDc45qK0ya8rc.js"></script>
@@ -40,7 +48,7 @@ body{margin:0;background:#fcfcfa;font-family:system-ui,sans-serif}
 
 <div style="border-top:2px dashed oklch(9% 0 0);border-bottom:2px dashed oklch(9% 0 0);overflow:hidden;white-space:nowrap;padding:10px 0;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:0.05em;text-transform:uppercase;width:100%;">
 <div ref="{{ tickerRef }}" style="display:inline-block;will-change:transform;">
-<span style="padding:0 20px;">♠ IZVAN SVAKE KONTROLE</span><span style="padding:0 20px;">♠&nbsp;POPIK</span><span style="padding:0 20px;">♠ ONAJ KOJI KUCA</span><span style="padding:0 20px;">♠&nbsp;TRKADŽIJA</span><span style="padding:0 20px;">♠ PANK TREPEZARIJA</span>
+<a href="https://www.izvansvakekontrole.com" class="ticker-link">♠ IZVAN SVAKE KONTROLE</a><a href="https://www.subvert.fm/popik" class="ticker-link">♠&nbsp;POPIK</a><a href="https://onajkojikuca.com" class="ticker-link">♠ ONAJ KOJI KUCA</a><a href="https://instagram.com/trkadzija" class="ticker-link">♠&nbsp;TRKADŽIJA</a><a href="https://www.onajkojikuca.com/pank-trepezarija/" class="ticker-link">♠ PANK TREPEZARIJA</a>
 </div>
 </div>
 
@@ -153,7 +161,7 @@ class Component extends DCLogic {
     var setWidth = self._tickerBaseWidth;
     if (!setWidth) return 0;
     var viewportWidth = el.parentElement.clientWidth;
-    var needed = Math.ceil(viewportWidth / setWidth) + 2; // buffer copies
+    var needed = Math.ceil((viewportWidth + setWidth) / setWidth) + 2;
     var current = el.children.length / self._tickerBaseChildren.length;
     while (current < needed) {
       self._tickerBaseChildren.forEach(function (child) { el.appendChild(child.cloneNode(true)); });
@@ -167,21 +175,28 @@ class Component extends DCLogic {
     var self = this;
     var speed = 40; // px per second
     var last = null;
+    var isHovering = false;
 
     this.ensureTickerCopies();
     this._tickerResizeHandler = function () { self.ensureTickerCopies(); };
     window.addEventListener('resize', this._tickerResizeHandler);
+
+    var tickerContainer = this.tickerRef.current?.parentElement;
+    if (tickerContainer) {
+      tickerContainer.addEventListener('mouseenter', function() { isHovering = true; });
+      tickerContainer.addEventListener('mouseleave', function() { isHovering = false; });
+    }
 
     function tick(ts) {
       if (!self.tickerRef.current) { self._tickerRaf = requestAnimationFrame(tick); return; }
       if (last === null) last = ts;
       var el = self.tickerRef.current;
       var period = self._tickerPeriod || 0;
-      if (period > 0) {
+      if (period > 0 && !isHovering) {
         self._tickerOffset = ((self._tickerOffset || 0) + speed * (ts - last) / 1000) % period;
         el.style.transform = 'translateX(-' + self._tickerOffset + 'px)';
       }
-      last = ts;
+      if (!isHovering) last = ts;
       self._tickerRaf = requestAnimationFrame(tick);
     }
     self._tickerRaf = requestAnimationFrame(tick);
