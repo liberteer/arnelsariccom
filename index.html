@@ -24,7 +24,8 @@ body{margin:0;background:#fcfcfa;font-family:system-ui,sans-serif}
   plausible.init()
 </script>
 </helmet>
-<div data-screen-label="Arnel Šarić Sharan — personal site" style="width:100%;max-width:1280px;margin:0 auto;position:relative;filter:{{ invertFilter }};color:oklch(9% 0 0);font-family:'PT Serif',Georgia,serif;background:repeating-linear-gradient(0deg, oklch(9% 0 0 / 0.015) 0 1px, transparent 1px 3px), repeating-linear-gradient(90deg, oklch(9% 0 0 / 0.015) 0 1px, transparent 1px 3px), oklch(99% 0.002 90);">
+<div data-screen-label="Arnel Šarić Sharan — personal site" style="min-height:100vh;width:100%;position:relative;filter:{{ invertFilter }};color:oklch(9% 0 0);font-family:'PT Serif',Georgia,serif;background:repeating-linear-gradient(0deg, oklch(9% 0 0 / 0.015) 0 1px, transparent 1px 3px), repeating-linear-gradient(90deg, oklch(9% 0 0 / 0.015) 0 1px, transparent 1px 3px), oklch(99% 0.002 90);">
+<div style="max-width:1280px;margin:0 auto;position:relative;">
 
 <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:10px 32px;border-bottom:2px dashed oklch(9% 0 0 / 0.5);font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.02em;">
 <span>arnelsaric.com</span>
@@ -37,7 +38,7 @@ body{margin:0;background:#fcfcfa;font-family:system-ui,sans-serif}
 <div style="margin-top:24px;font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:0.06em;text-transform:uppercase;">[ Novinar ] [ Muzičar ] [ Promoter Subkultura ] [ Autor ]</div>
 </div>
 
-<div style="border-top:2px dashed oklch(9% 0 0);border-bottom:2px dashed oklch(9% 0 0);overflow:hidden;white-space:nowrap;padding:10px 0;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:0.05em;text-transform:uppercase;">
+<div style="border-top:2px dashed oklch(9% 0 0);border-bottom:2px dashed oklch(9% 0 0);overflow:hidden;white-space:nowrap;padding:10px 0;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:0.05em;text-transform:uppercase;width:100%;">
 <div ref="{{ tickerRef }}" style="display:inline-block;will-change:transform;">
 <span style="padding:0 20px;">♠ IZVAN SVAKE KONTROLE</span><span style="padding:0 20px;">♠&nbsp;POPIK</span><span style="padding:0 20px;">♠ ONAJ KOJI KUCA</span><span style="padding:0 20px;">♠&nbsp;TRKADŽIJA</span><span style="padding:0 20px;">♠ PANK TREPEZARIJA</span>
 </div>
@@ -93,11 +94,9 @@ body{margin:0;background:#fcfcfa;font-family:system-ui,sans-serif}
 <span style="font-size:16px;">✉</span>
 <span>PIŠI MI</span>
 </a>
-</div>
+</div></div>
 
 </div>
-
-</x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:1000},&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#e0263b&quot;,&quot;options&quot;:[&quot;#e0263b&quot;,&quot;#2fae4e&quot;,&quot;#e0a622&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Style&quot;},&quot;motionEnabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Style&quot;},&quot;darkDefault&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Style&quot;}}">
 class Component extends DCLogic {
   tickerRef = React.createRef();
