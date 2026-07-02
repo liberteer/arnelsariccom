@@ -19,11 +19,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 body{margin:0;background:#fcfcfa;font-family:system-ui,sans-serif}
-@keyframes ticker-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes ticker-scroll{from{transform:translateX(0);}to{transform:translateX(-33.3334%);}}
 @keyframes blink-cursor{0%,49%{opacity:1}50%,100%{opacity:0}}
 @keyframes link-flash{0%,100%{opacity:1}50%{opacity:0.5}}
 .ticker-link{color:oklch(9% 0 0);text-decoration:none;display:inline-block;pointer-events:auto;padding:0 20px;}
 .ticker-link:hover{color:#e0263b;}
+.ticker-track{animation:ticker-scroll 14.667s linear infinite;}
+.ticker-track.ticker-track--static{animation-play-state:paused;}
+.ticker-outer:hover .ticker-track:not(.ticker-track--static){animation-play-state:paused;}
 .mreže-link{display:flex;flex-direction:column;justify-content:center;align-items:center;width:176px;height:64px;border:2px solid oklch(9% 0 0);text-decoration:none;color:oklch(9% 0 0);font-family:'Space Mono',monospace;text-align:center;box-shadow:3px 3px 0 oklch(9% 0 0);}
 .mreže-link:hover{background:oklch(9% 0 0);color:oklch(99% 0.002 90);}
 .mreže-link:hover span{color:oklch(99% 0.002 90);}
@@ -49,9 +52,17 @@ body{margin:0;background:#fcfcfa;font-family:system-ui,sans-serif}
 <div style="margin-top:24px;font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:0.06em;text-transform:uppercase;">[ Novinar ] [ Muzičar ] [ Promoter Subkultura ] [ Autor ]</div>
 </div>
 
-<div style="border-top:2px dashed oklch(9% 0 0);border-bottom:2px dashed oklch(9% 0 0);overflow:hidden;white-space:nowrap;padding:10px 0;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:0.05em;text-transform:uppercase;width:100%;">
-<div ref="{{ tickerRef }}" style="display:inline-block;will-change:transform;">
+<div class="ticker-outer" style="border-top:2px dashed oklch(9% 0 0);border-bottom:2px dashed oklch(9% 0 0);overflow:hidden;white-space:nowrap;padding:10px 0;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:0.05em;text-transform:uppercase;width:100%;">
+<div ref="{{ tickerRef }}" class="{{ tickerTrackClass }}" style="display:inline-flex;">
+<div class="ticker-group" style="display:inline-flex;flex-shrink:0;">
 <a href="https://www.izvansvakekontrole.com" class="ticker-link">♠ IZVAN SVAKE KONTROLE</a><a href="https://www.subvert.fm/popik" class="ticker-link">♠&nbsp;POPIK</a><a href="https://onajkojikuca.com" class="ticker-link">♠ ONAJ KOJI KUCA</a><a href="https://instagram.com/trkadzija" class="ticker-link">♠&nbsp;TRKADŽIJA</a><a href="https://www.onajkojikuca.com/pank-trepezarija/" class="ticker-link">♠ PANK TREPEZARIJA</a>
+</div>
+<div class="ticker-group" aria-hidden="true" style="display:inline-flex;flex-shrink:0;">
+<a href="https://www.izvansvakekontrole.com" class="ticker-link">♠ IZVAN SVAKE KONTROLE</a><a href="https://www.subvert.fm/popik" class="ticker-link">♠&nbsp;POPIK</a><a href="https://onajkojikuca.com" class="ticker-link">♠ ONAJ KOJI KUCA</a><a href="https://instagram.com/trkadzija" class="ticker-link">♠&nbsp;TRKADŽIJA</a><a href="https://www.onajkojikuca.com/pank-trepezarija/" class="ticker-link">♠ PANK TREPEZARIJA</a>
+</div>
+<div class="ticker-group" aria-hidden="true" style="display:inline-flex;flex-shrink:0;">
+<a href="https://www.izvansvakekontrole.com" class="ticker-link">♠ IZVAN SVAKE KONTROLE</a><a href="https://www.subvert.fm/popik" class="ticker-link">♠&nbsp;POPIK</a><a href="https://onajkojikuca.com" class="ticker-link">♠ ONAJ KOJI KUCA</a><a href="https://instagram.com/trkadzija" class="ticker-link">♠&nbsp;TRKADŽIJA</a><a href="https://www.onajkojikuca.com/pank-trepezarija/" class="ticker-link">♠ PANK TREPEZARIJA</a>
+</div>
 </div>
 </div>
 
@@ -137,7 +148,9 @@ class Component extends DCLogic {
       this.setState({ dark: true });
     }
     if (this.props.motionEnabled ?? true) {
-      this.startTicker();
+      // Ticker duration is a fixed CSS value (fixed font-size means fixed content
+      // width) — no JS needed, which also avoids any runtime duration change
+      // (that would restart/jump a running CSS animation).
     }
     fetch('./sadrzaj_depese.json', { cache: 'no-store' })
       .then(function (r) { return r.ok ? r.json() : null; })
@@ -153,62 +166,7 @@ class Component extends DCLogic {
       .catch(function () { /* no content.json next to the page yet — embedded defaults still work */ });
   }
 
-  ensureTickerCopies() {
-    var self = this;
-    var el = self.tickerRef.current;
-    if (!el || !el.parentElement) return 0;
-    if (!self._tickerBaseChildren) {
-      self._tickerBaseChildren = Array.prototype.slice.call(el.children);
-      self._tickerBaseWidth = el.getBoundingClientRect().width;
-    }
-    var setWidth = self._tickerBaseWidth;
-    if (!setWidth) return 0;
-    var viewportWidth = el.parentElement.clientWidth;
-    var needed = Math.ceil((viewportWidth + setWidth) / setWidth) + 2;
-    var current = el.children.length / self._tickerBaseChildren.length;
-    while (current < needed) {
-      self._tickerBaseChildren.forEach(function (child) { el.appendChild(child.cloneNode(true)); });
-      current++;
-    }
-    self._tickerPeriod = setWidth;
-    return setWidth;
-  }
-
-  startTicker() {
-    var self = this;
-    var speed = 40; // px per second
-    var last = null;
-    var isHovering = false;
-
-    this.ensureTickerCopies();
-    this._tickerResizeHandler = function () { self.ensureTickerCopies(); };
-    window.addEventListener('resize', this._tickerResizeHandler);
-
-    var tickerContainer = this.tickerRef.current?.parentElement;
-    if (tickerContainer) {
-      tickerContainer.addEventListener('mouseenter', function() { isHovering = true; });
-      tickerContainer.addEventListener('mouseleave', function() { isHovering = false; });
-    }
-
-    function tick(ts) {
-      if (!self.tickerRef.current) { self._tickerRaf = requestAnimationFrame(tick); return; }
-      if (last === null) last = ts;
-      var el = self.tickerRef.current;
-      var period = self._tickerPeriod || 0;
-      if (period > 0 && !isHovering) {
-        self._tickerOffset = ((self._tickerOffset || 0) + speed * (ts - last) / 1000) % period;
-        el.style.transform = 'translateX(-' + self._tickerOffset + 'px)';
-      }
-      if (!isHovering) last = ts;
-      self._tickerRaf = requestAnimationFrame(tick);
-    }
-    self._tickerRaf = requestAnimationFrame(tick);
-  }
-
-  componentWillUnmount() {
-    if (this._tickerRaf) cancelAnimationFrame(this._tickerRaf);
-    if (this._tickerResizeHandler) window.removeEventListener('resize', this._tickerResizeHandler);
-  }
+  componentWillUnmount() {}
 
   getDateline() {
     var days = ['nedjelja','ponedjeljak','utorak','srijeda','četvrtak','petak','subota'];
@@ -247,6 +205,7 @@ class Component extends DCLogic {
       toggleIcon: this.state.dark ? '🖕' : '🤘',
       toggleDark: function () { self.setState(function (s) { return { dark: !s.dark }; }); },
       tickerRef: this.tickerRef,
+      tickerTrackClass: motion ? 'ticker-track' : 'ticker-track ticker-track--static',
       blinkAnim: motion ? 'blink-cursor 1.4s step-start infinite' : 'none',
       linkFlashAnim: motion ? 'link-flash 1.6s ease-in-out infinite' : 'none',
       emailDisplay: email,
