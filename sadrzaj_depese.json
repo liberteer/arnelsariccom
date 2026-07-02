@@ -1,0 +1,14 @@
+{
+  "links": [
+    { "label": "INSTAGRAM", "handle": "@trkadzija", "url": "https://instagram.com/trkadzija" },
+    { "label": "FACEBOOK", "handle": "buddhaletina", "url": "https://www.facebook.com/buddhaletina" },
+    { "label": "BLUESKY", "handle": "arnelsaric.com", "url": "https://mu.social/profile/arnelsaric.com" },
+    { "label": "MASTODON", "handle": "@sharan@metalhead.club", "url": "https://metalhead.club/@sharan" },
+    { "label": "BANDCAMP", "handle": "sharan.bandcamp.com", "url": "https://sharan.bandcamp.com" }
+  ],
+  "posts": [
+    { "date": "02.07.26.", "tag": "ISK", "title": "Moja izvještaj", "text": "Odlična svirka japanske Moje u Puli. Izvještaj je vrijedan čitanja.", "link": "https://izvansvakekontrole.com/moja-pogon-monteparadiso-pula-report/", "linkLabel": "Pročitaj", "rot": -1.4 },
+    { "date": "29.06.26.", "tag": "POPIK", "title": "POPIK i Dwarves u Zaboku", "text": "POPIK je na bini sa legendarnim punk rockerima The Dwarves u Regeneratoru u Zaboku 3. jula.", "link": "https://core-event.co/en/events/koncert-dwarves-i-popik-regenerator-zabok-bcd9/", "linkLabel": "Kupi karte", "rot": 0.8 },
+    { "date": "25.06.26.", "tag": "PROJEKTI", "title": "Planet Sporo", "text": "Volite retro forumsku komunikaciju? Avatare, gif smajlije? Dođite na Planet Sporo", "link": "https://www.onajkojikuca.com/forum/", "linkLabel": "Pridruži se", "rot": -0.6 }
+  ]
+}

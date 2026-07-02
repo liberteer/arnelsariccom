@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#fcfcfa;font-family:system-ui,sans-serif}
+@keyframes ticker-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes blink-cursor{0%,49%{opacity:1}50%,100%{opacity:0}}
+@keyframes link-flash{0%,100%{opacity:1}50%{opacity:0.5}}
+</style>
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-ERoZCx1njDc45qK0ya8rc.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+</helmet>
+<div data-screen-label="Arnel Šarić Sharan — personal site" style="width:100%;max-width:1280px;margin:0 auto;position:relative;filter:{{ invertFilter }};color:oklch(9% 0 0);font-family:'PT Serif',Georgia,serif;background:repeating-linear-gradient(0deg, oklch(9% 0 0 / 0.015) 0 1px, transparent 1px 3px), repeating-linear-gradient(90deg, oklch(9% 0 0 / 0.015) 0 1px, transparent 1px 3px), oklch(99% 0.002 90);">
+
+<div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:10px 32px;border-bottom:2px dashed oklch(9% 0 0 / 0.5);font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.02em;">
+<span>arnelsaric.com</span>
+<button onClick="{{ toggleDark }}" aria-label="{{ toggleLabel }}" style="background:none;border:none;cursor:pointer;padding:0;font-size:19px;line-height:1;display:flex;align-items:center;" style-hover="opacity:0.6;">{{ toggleIcon }}</button>
+</div>
+
+<div style="text-align:center;padding:58px 24px 24px;">
+<div style="display:inline-block;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;border:1px solid oklch(9% 0 0);padding:4px 14px;margin-bottom:22px;transform:rotate(-1.2deg);">POZDRAV, JA SAM...</div>
+<h1 style="font-family:'Anton',Impact,sans-serif;font-size:clamp(40px,9vw,100px);line-height:0.92;margin:0;text-transform:uppercase;letter-spacing:0.005em;transform:rotate(-1deg);text-shadow:4px 4px 0 oklch(9% 0 0 / 0.12);">Arnel Šarić<br>Sharan</h1>
+<div style="margin-top:24px;font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:0.06em;text-transform:uppercase;">[ Novinar ] [ Muzičar ] [ Promoter Subkultura ] [ Autor ]</div>
+</div>
+
+<div style="border-top:2px dashed oklch(9% 0 0);border-bottom:2px dashed oklch(9% 0 0);overflow:hidden;white-space:nowrap;padding:10px 0;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:0.05em;text-transform:uppercase;">
+<div ref="{{ tickerRef }}" style="display:inline-block;will-change:transform;">
+<span style="padding:0 20px;">♠ IZVAN SVAKE KONTROLE</span><span style="padding:0 20px;">♠&nbsp;POPIK</span><span style="padding:0 20px;">♠ ONAJ KOJI KUCA</span><span style="padding:0 20px;">♠&nbsp;TRKADŽIJA</span><span style="padding:0 20px;">♠ PANK TREPEZARIJA</span>
+</div>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:36px;padding:44px 40px;">
+<div style="position:relative;flex:1 1 220px;max-width:240px;filter:{{ portraitFilter }};">
+<div style="width:100%;aspect-ratio:240/290;border:6px solid oklch(99% 0.002 90);outline:2px solid oklch(9% 0 0);transform:rotate(-2deg);overflow:hidden;background-size:cover;background-position:center;background-image:url(./portrait.jpg);box-shadow:5px 8px 0 oklch(9% 0 0 / 0.15);box-sizing:border-box;"></div>
+<div style="position:absolute;top:-10px;right:0px;background:oklch(9% 0 0);color:oklch(99% 0.002 90);font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:0.1em;padding:4px 8px;transform:rotate(4deg);">foto: Dženat Dreković</div>
+</div>
+<div style="flex:3 1 320px;min-width:0;">
+<div style="font-family:'Anton',sans-serif;font-size:clamp(22px,4vw,30px);text-transform:uppercase;margin-bottom:14px;letter-spacing:0.005em;">O meni</div>
+<p style="font-size:18.5px;line-height:1.7;margin:0;max-width:640px;">Više od 20 godina djelujem u različitim domenama. Najveći trag sam (zasad) ostavio kao novinar, muzičar, promoter subkultura i autor.</p>
+</div>
+</div>
+
+<div style="padding:44px 40px;border-top:2px dashed oklch(9% 0 0);">
+<div style="font-family:'Anton',sans-serif;font-size:clamp(22px,4vw,30px);text-transform:uppercase;margin-bottom:6px;">Depeše</div>
+<div style="font-family:'PT Serif',serif;font-style:italic;font-size:14px;opacity:0.6;margin-bottom:22px;">Depeše, bilješke i usputne objave.</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;">
+<sc-for list="{{ posts }}" as="d" hint-placeholder-count="6">
+<div style="display:flex;flex-direction:column;gap:10px;padding:18px;border:2px dashed oklch(9% 0 0 / 0.55);background:oklch(99% 0.002 90);box-shadow:4px 4px 0 oklch(9% 0 0 / 0.12);transform:rotate({{ d.rot }}deg);">
+<div style="display:flex;flex-direction:column;gap:8px;">
+<div style="font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;opacity:0.6;letter-spacing:0.02em;">[ {{ d.date }} ] {{ d.tag }}</div>
+<div style="font-family:'Anton',sans-serif;font-size:24px;text-transform:uppercase;letter-spacing:0.01em;">{{ d.title }}</div>
+</div>
+<p style="margin:0;font-size:15px;line-height:1.55;">{{ d.text }}</p>
+<a href="{{ d.link }}" target="_blank" rel="noopener" style="align-self:flex-start;font-family:'Space Mono',monospace;font-weight:700;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;text-decoration:none;color:{{ accentColor }};text-shadow:0 0 5px,0 0 14px;animation:{{ linkFlashAnim }};">{{ d.linkLabel }} »</a>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div style="padding:44px 40px;border-top:2px dashed oklch(9% 0 0);">
+<div style="font-family:'Anton',sans-serif;font-size:clamp(22px,4vw,30px);text-transform:uppercase;margin-bottom:20px;">MREŽE</div>
+<div style="display:flex;flex-wrap:wrap;gap:14px;">
+<sc-for list="{{ links }}" as="link" hint-placeholder-count="6">
+<a href="{{ link.url }}" target="_blank" rel="noopener" style="display:flex;flex-direction:column;justify-content:center;align-items:center;width:176px;height:64px;border:2px solid oklch(9% 0 0);text-decoration:none;color:oklch(9% 0 0);font-family:'Space Mono',monospace;text-align:center;box-shadow:3px 3px 0 oklch(9% 0 0);" style-hover="background:oklch(9% 0 0);color:oklch(99% 0.002 90);">
+<span style="font-size:12px;font-weight:700;letter-spacing:0.06em;">{{ link.label }}</span>
+<span style="font-size:10px;opacity:0.7;margin-top:3px;">{{ link.handle }}</span>
+</a>
+</sc-for>
+<div style="display:flex;flex-direction:column;justify-content:center;align-items:center;width:176px;height:64px;background:oklch(9% 0 0);color:oklch(99% 0.002 90);font-family:'Space Mono',monospace;text-align:center;transform:rotate(-1.5deg);box-shadow:3px 3px 0 oklch(9% 0 0 / 0.4);">
+<span style="font-size:11px;font-weight:700;letter-spacing:0.05em;">⚠ NEMAM</span>
+<span style="font-size:11px;font-weight:700;letter-spacing:0.05em;margin-top:2px;">TWITTER I TIKTOK</span>
+</div>
+</div>
+</div>
+
+<div style="padding:24px 40px;border-top:2px dashed oklch(9% 0 0);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;font-family:'Space Mono',monospace;font-size:11px;">
+<span>© 2026 ARNEL ŠARIĆ SHARAN — PRAVA? KOJA PRAVA?</span>
+<a href="{{ mailtoLink }}" style="display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:{{ accentColor }};text-shadow:0 0 5px,0 0 14px;animation:{{ linkFlashAnim }};cursor:pointer;font-size:12px;letter-spacing:0.05em;text-transform:uppercase;">
+<span style="font-size:16px;">✉</span>
+<span>PIŠI MI</span>
+</a>
+</div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:1000},&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#e0263b&quot;,&quot;options&quot;:[&quot;#e0263b&quot;,&quot;#2fae4e&quot;,&quot;#e0a622&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Style&quot;},&quot;motionEnabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Style&quot;},&quot;darkDefault&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Style&quot;}}">
+class Component extends DCLogic {
+  tickerRef = React.createRef();
+  state = {
+    dark: false,
+    sent: false,
+    links: [
+      { label: 'INSTAGRAM', handle: '@trkadzija', url: 'https://instagram.com/trkadzija' },
+      { label: 'FACEBOOK', handle: 'buddhaletina', url: 'https://www.facebook.com/buddhaletina' },
+      { label: 'BLUESKY', handle: 'arnelsaric.com', url: 'https://mu.social/profile/arnelsaric.com' },
+      { label: 'MASTODON', handle: '@sharan@metalhead.club', url: 'https://metalhead.club/@sharan' },
+      { label: 'BANDCAMP', handle: 'sharan.bandcamp.com', url: 'https://sharan.bandcamp.com' },
+    ],
+    posts: [
+      { date: '02.07.26.', tag: 'DEPEŠA', title: 'Nova objava na arhivi', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.', link: '#', linkLabel: 'Pročitaj', rot: -1.4 },
+      { date: '29.06.26.', tag: 'SVIRKA', title: 'Nastup ovog petka', text: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.', link: '#', linkLabel: 'Detalji', rot: 0.8 },
+      { date: '25.06.26.', tag: 'ARHIVA', title: 'Digitalizirana stara izdanja', text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.', link: '#', linkLabel: 'Pogledaj', rot: -0.6 },
+      { date: '19.06.26.', tag: 'USPUT', title: 'Kratka bilješka', text: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.', link: '#', linkLabel: 'Više', rot: 1.1 },
+      { date: '14.06.26.', tag: 'OBJAVA', title: 'Najava novog teksta', text: 'Curabitur pretium tincidunt lacus, et auctor felis blandit nec. Vestibulum ante ipsum primis.', link: '#', linkLabel: 'Otvori', rot: -0.9 },
+      { date: '08.06.26.', tag: 'DEPEŠA', title: 'Iz bilježnice', text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.', link: '#', linkLabel: 'Čitaj', rot: 0.6 },
+    ],
+  };
+
+  componentDidMount() {
+    var self = this;
+    if (this.props.darkDefault) {
+      this.setState({ dark: true });
+    }
+    if (this.props.motionEnabled ?? true) {
+      this.startTicker();
+    }
+    fetch('./sadrzaj_depese.json', { cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (data) {
+        if (!data) return;
+        self.setState(function (s) {
+          return {
+            links: Array.isArray(data.links) ? data.links : s.links,
+            posts: Array.isArray(data.posts) ? data.posts : s.posts,
+          };
+        });
+      })
+      .catch(function () { /* no content.json next to the page yet — embedded defaults still work */ });
+  }
+
+  ensureTickerCopies() {
+    var self = this;
+    var el = self.tickerRef.current;
+    if (!el || !el.parentElement) return 0;
+    if (!self._tickerBaseChildren) {
+      self._tickerBaseChildren = Array.prototype.slice.call(el.children);
+      self._tickerBaseWidth = el.getBoundingClientRect().width;
+    }
+    var setWidth = self._tickerBaseWidth;
+    if (!setWidth) return 0;
+    var viewportWidth = el.parentElement.clientWidth;
+    var needed = Math.ceil(viewportWidth / setWidth) + 2; // buffer copies
+    var current = el.children.length / self._tickerBaseChildren.length;
+    while (current < needed) {
+      self._tickerBaseChildren.forEach(function (child) { el.appendChild(child.cloneNode(true)); });
+      current++;
+    }
+    self._tickerPeriod = setWidth;
+    return setWidth;
+  }
+
+  startTicker() {
+    var self = this;
+    var speed = 40; // px per second
+    var last = null;
+
+    this.ensureTickerCopies();
+    this._tickerResizeHandler = function () { self.ensureTickerCopies(); };
+    window.addEventListener('resize', this._tickerResizeHandler);
+
+    function tick(ts) {
+      if (!self.tickerRef.current) { self._tickerRaf = requestAnimationFrame(tick); return; }
+      if (last === null) last = ts;
+      var el = self.tickerRef.current;
+      var period = self._tickerPeriod || 0;
+      if (period > 0) {
+        self._tickerOffset = ((self._tickerOffset || 0) + speed * (ts - last) / 1000) % period;
+        el.style.transform = 'translateX(-' + self._tickerOffset + 'px)';
+      }
+      last = ts;
+      self._tickerRaf = requestAnimationFrame(tick);
+    }
+    self._tickerRaf = requestAnimationFrame(tick);
+  }
+
+  componentWillUnmount() {
+    if (this._tickerRaf) cancelAnimationFrame(this._tickerRaf);
+    if (this._tickerResizeHandler) window.removeEventListener('resize', this._tickerResizeHandler);
+  }
+
+  getDateline() {
+    var days = ['nedjelja','ponedjeljak','utorak','srijeda','četvrtak','petak','subota'];
+    var months = ['siječnja','veljače','ožujka','travnja','svibnja','lipnja','srpnja','kolovoza','rujna','listopada','studenoga','prosinca'];
+    var now = new Date();
+    return days[now.getDay()] + ', ' + now.getDate() + '. ' + months[now.getMonth()] + ' ' + now.getFullYear() + '.';
+  }
+
+  obfuscateEmail(email) {
+    // Simple cipher: shift each char by 5
+    return String(email).split('').map(function(c) {
+      var code = c.charCodeAt(0);
+      return String.fromCharCode(code + 5);
+    }).join('');
+  }
+
+  deobfuscateEmail(obfuscated) {
+    return String(obfuscated).split('').map(function(c) {
+      var code = c.charCodeAt(0);
+      return String.fromCharCode(code - 5);
+    }).join('');
+  }
+
+  renderVals() {
+    var self = this;
+    var motion = this.props.motionEnabled ?? true;
+    var email = 'sharan@onajkojikuca.com';
+    var obfuscated = this.obfuscateEmail(email);
+    return {
+      links: this.state.links,
+      posts: this.state.posts,
+      accentColor: this.props.accentColor ?? '#e0263b',
+      invertFilter: this.state.dark ? 'invert(1) hue-rotate(180deg)' : 'none',
+      portraitFilter: this.state.dark ? 'invert(1) hue-rotate(180deg)' : 'none',
+      toggleLabel: this.state.dark ? 'SVIJETLI REŽIM' : 'TAMNI REŽIM',
+      toggleIcon: this.state.dark ? '🖕' : '🤘',
+      toggleDark: function () { self.setState(function (s) { return { dark: !s.dark }; }); },
+      tickerRef: this.tickerRef,
+      blinkAnim: motion ? 'blink-cursor 1.4s step-start infinite' : 'none',
+      linkFlashAnim: motion ? 'link-flash 1.6s ease-in-out infinite' : 'none',
+      emailDisplay: email,
+      mailtoLink: 'mailto:' + email,
+    };
+  }
+}
+</script>
+</body>
+</html>
