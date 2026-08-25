@@ -36,10 +36,14 @@ body{margin:0;background:#fcfcfa;font-family:system-ui,sans-serif}
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   if (/(^|\.)arnelsaric\.com$/.test(location.hostname)) {
-    document.querySelectorAll('a[href$=".dc.html"]').forEach(function (a) {
-      a.setAttribute('href', '/' + a.getAttribute('href').replace(/\.dc\.html$/, ''));
+    document.querySelectorAll('a[href]').forEach(function (a) {
+      var href = a.getAttribute('href');
+      if (/\.dc(\.html)?$/.test(href)) {
+        a.setAttribute('href', '/' + href.replace(/\.dc(\.html)?$/, ''));
+      } else if (href === 'index.html') {
+        a.setAttribute('href', '/');
+      }
     });
-    document.querySelectorAll('a[href="index.html"]').forEach(function (a) { a.setAttribute('href', '/'); });
   }
 });
 </script>
