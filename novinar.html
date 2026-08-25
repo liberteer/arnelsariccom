@@ -8,6 +8,12 @@
 <body>
 <x-dc>
 <helmet>
+<title>Novinar - arnelsaric.com</title>
+<meta name="description" content="Od sarajevske 202-jke do Pank Trepezarije, ovo je novinarski put Arnela Šarića Sharana">
+<meta property="og:title" content="Novinar - arnelsaric.com">
+<meta property="og:description" content="Od sarajevske 202-jke do Pank Trepezarije, ovo je novinarski put Arnela Šarića Sharana">
+<meta property="og:image" content="https://arnelsaric.com/portrait.jpg">
+<meta property="og:url" content="https://arnelsaric.com/novinar">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -21,6 +27,20 @@ body{margin:0;background:#fcfcfa;font-family:system-ui,sans-serif}
 .email-link{color:#e0263b;text-decoration:none;}
 .email-link:hover{opacity:0.7;}
 </style>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  if (/(^|\.)arnelsaric\.com$/.test(location.hostname)) {
+    document.querySelectorAll('a[href]').forEach(function (a) {
+      var href = a.getAttribute('href');
+      if (/\.dc(\.html)?$/.test(href)) {
+        a.setAttribute('href', '/' + href.replace(/\.dc(\.html)?$/, ''));
+      } else if (href === 'index.html') {
+        a.setAttribute('href', '/');
+      }
+    });
+  }
+});
+</script>
 </helmet>
 <div data-screen-label="Novinar — Arnel Šarić Sharan" style="min-height:100vh;width:100%;color:oklch(9% 0 0);font-family:'PT Serif',Georgia,serif;background:repeating-linear-gradient(0deg, oklch(9% 0 0 / 0.015) 0 1px, transparent 1px 3px), repeating-linear-gradient(90deg, oklch(9% 0 0 / 0.015) 0 1px, transparent 1px 3px), oklch(99% 0.002 90);">
 <div style="max-width:1280px;margin:0 auto;">
