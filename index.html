@@ -84,7 +84,7 @@ body{margin:0;background:#fcfcfa;font-family:system-ui,sans-serif}
 <p style="font-size:18.5px;line-height:1.7;margin:0;max-width:640px;">Više od 20 godina djelujem u različitim domenama. Najveći trag sam (zasad) ostavio kao novinar, muzičar, promoter subkultura i autor.</p>
 <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:24px;padding:16px 20px;max-width:640px;border:2px dashed oklch(9% 0 0);background:oklch(9% 0 0 / 0.03);">
 <span style="font-family:'Space Mono',monospace;font-size:13.5px;line-height:1.5;flex:1 1 240px;">Ekskluzivan tekst, odlične preporuke, sumirane vijesti - jednom mjesečno. Komunicirajmo direktno, izvan algoritma.</span>
-<a href="https://buddhaletina.beehiiv.com/subscribe" target="_blank" rel="noopener" style="flex-shrink:0;display:inline-flex;align-items:center;gap:8px;background:#e0263b;color:oklch(99% 0.002 90);text-decoration:none;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;padding:12px 20px;border:2px solid oklch(9% 0 0);box-shadow:3px 3px 0 oklch(9% 0 0);transform:rotate(-0.6deg);transition:transform 0.15s, box-shadow 0.15s;" onmouseover="this.style.transform='rotate(0deg) translate(-2px,-2px)';this.style.boxShadow='5px 5px 0 oklch(9% 0 0)';" onmouseout="this.style.transform='rotate(-0.6deg)';this.style.boxShadow='3px 3px 0 oklch(9% 0 0)';">✉ Pretplata na NJUZETER</a>
+<a ref="{{ ctaRef }}" href="https://buddhaletina.beehiiv.com/subscribe" target="_blank" rel="noopener" style="visibility:{{ ctaInPlaceVisibility }};flex-shrink:0;display:inline-flex;align-items:center;gap:8px;background:#e0263b;color:oklch(99% 0.002 90);text-decoration:none;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;padding:12px 20px;border:2px solid oklch(9% 0 0);box-shadow:3px 3px 0 oklch(9% 0 0);transform:rotate(-0.6deg);transition:transform 0.15s, box-shadow 0.15s;box-sizing:border-box;" onmouseover="this.style.transform='rotate(0deg) translate(-2px,-2px)';this.style.boxShadow='5px 5px 0 oklch(9% 0 0)';" onmouseout="this.style.transform='rotate(-0.6deg)';this.style.boxShadow='3px 3px 0 oklch(9% 0 0)';">✉ Pretplata na NJUZETER</a>
 </div>
 </div>
 </div>
@@ -114,12 +114,15 @@ body{margin:0;background:#fcfcfa;font-family:system-ui,sans-serif}
 </div></div>
 
 </div>
+<a href="https://buddhaletina.beehiiv.com/subscribe" target="_blank" rel="noopener" style="display:{{ ctaPortalDisplay }};position:absolute;top:{{ ctaPos.top }}px;left:{{ ctaPos.left }}px;width:{{ ctaPos.width }}px;height:{{ ctaPos.height }}px;align-items:center;justify-content:center;gap:8px;background:#e0263b;color:oklch(99% 0.002 90);text-decoration:none;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;padding:12px 20px;border:2px solid oklch(9% 0 0);box-shadow:3px 3px 0 oklch(9% 0 0);transform:rotate(-0.6deg);box-sizing:border-box;z-index:20;">✉ Pretplata na NJUZETER</a>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:1000},&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#e0263b&quot;,&quot;options&quot;:[&quot;#e0263b&quot;,&quot;#2fae4e&quot;,&quot;#e0a622&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Style&quot;},&quot;motionEnabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Style&quot;},&quot;darkDefault&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Style&quot;}}">
 class Component extends DCLogic {
   tickerRef = React.createRef();
+  ctaRef = React.createRef();
   state = {
     dark: false,
     sent: false,
+    ctaPos: { top: 0, left: 0, width: 0, height: 0 },
     links: [
       { label: 'INSTAGRAM', handle: '@trkadzija', url: 'https://instagram.com/trkadzija' },
       { label: 'FACEBOOK', handle: 'buddhaletina', url: 'https://www.facebook.com/buddhaletina' },
@@ -147,6 +150,16 @@ class Component extends DCLogic {
       // width) — no JS needed, which also avoids any runtime duration change
       // (that would restart/jump a running CSS animation).
     }
+    this.measureCta = function () {
+      if (self.ctaRef.current) {
+        var r = self.ctaRef.current.getBoundingClientRect();
+        self.setState({ ctaPos: { top: r.top + window.scrollY, left: r.left + window.scrollX, width: r.width, height: r.height } });
+      }
+    };
+    this.measureCta();
+    requestAnimationFrame(this.measureCta);
+    setTimeout(this.measureCta, 400);
+    window.addEventListener('resize', this.measureCta);
     fetch('./sadrzaj_depese.json', { cache: 'no-store' })
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (data) {
@@ -161,7 +174,16 @@ class Component extends DCLogic {
       .catch(function () { /* no content.json next to the page yet — embedded defaults still work */ });
   }
 
-  componentWillUnmount() {}
+  componentDidUpdate() {
+    if (this._prevDark !== this.state.dark) {
+      this._prevDark = this.state.dark;
+      if (this.measureCta) this.measureCta();
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.measureCta) window.removeEventListener('resize', this.measureCta);
+  }
 
   getDateline() {
     var days = ['nedjelja','ponedjeljak','utorak','srijeda','četvrtak','petak','subota'];
@@ -195,6 +217,10 @@ class Component extends DCLogic {
       posts: this.state.posts,
       accentColor: this.props.accentColor ?? '#e0263b',
       invertFilter: this.state.dark ? 'invert(1) hue-rotate(180deg)' : 'none',
+      ctaRef: this.ctaRef,
+      ctaInPlaceVisibility: this.state.dark ? 'hidden' : 'visible',
+      ctaPortalDisplay: this.state.dark ? 'inline-flex' : 'none',
+      ctaPos: this.state.ctaPos,
       portraitFilter: this.state.dark ? 'invert(1) hue-rotate(180deg)' : 'none',
       toggleLabel: this.state.dark ? 'SVIJETLI REŽIM' : 'TAMNI REŽIM',
       toggleIcon: this.state.dark ? '🖕' : '🤘',
