@@ -30,6 +30,8 @@ body{margin:0;background:#fcfcfa;font-family:system-ui,sans-serif}
 .mreže-link{display:flex;flex-direction:column;justify-content:center;align-items:center;width:176px;height:64px;border:2px solid oklch(9% 0 0);text-decoration:none;color:oklch(9% 0 0);font-family:'Space Mono',monospace;text-align:center;box-shadow:3px 3px 0 oklch(9% 0 0);}
 .mreže-link:hover{background:oklch(9% 0 0);color:oklch(99% 0.002 90);}
 .mreže-link:hover span{color:oklch(99% 0.002 90);}
+.nav-link{color:oklch(9% 0 0);text-decoration:none;}
+.nav-link:hover{color:#e0263b;}
 </style>
 <!-- Privacy-friendly analytics by Plausible -->
 <script async src="https://plausible.io/js/pa-ERoZCx1njDc45qK0ya8rc.js"></script>
@@ -49,7 +51,13 @@ body{margin:0;background:#fcfcfa;font-family:system-ui,sans-serif}
 <div style="text-align:center;padding:58px 24px 24px;">
 <div style="display:inline-block;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;border:1px solid oklch(9% 0 0);padding:4px 14px;margin-bottom:22px;transform:rotate(-1.2deg);">POZDRAV, JA SAM...</div>
 <h1 style="font-family:'Anton',Impact,sans-serif;font-size:clamp(40px,9vw,100px);line-height:0.92;margin:0;text-transform:uppercase;letter-spacing:0.005em;transform:rotate(-1deg);text-shadow:4px 4px 0 oklch(9% 0 0 / 0.12);">Arnel Šarić<br>Sharan</h1>
-<div style="margin-top:24px;font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:0.06em;text-transform:uppercase;">[ Novinar ] [ Muzičar ] [ Promoter Subkultura ] [ Autor ]</div>
+<div style="margin-top:24px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:0.06em;text-transform:uppercase;">
+<a href="muzicar.dc.html" class="nav-link">[ Muzičar ]</a>
+<a href="promoter.dc.html" class="nav-link">[ Promoter Subkultura ]</a>
+<a href="autor.dc.html" class="nav-link">[ Autor ]</a>
+<a href="novinar.dc.html" class="nav-link">[ Novinar ]</a>
+<a href="sad.dc.html" class="nav-link">[ Status ]</a>
+</div>
 </div>
 
 <div class="ticker-outer" style="border-top:2px dashed oklch(9% 0 0);border-bottom:2px dashed oklch(9% 0 0);overflow:hidden;white-space:nowrap;padding:10px 0;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:0.05em;text-transform:uppercase;width:100%;">
@@ -74,23 +82,10 @@ body{margin:0;background:#fcfcfa;font-family:system-ui,sans-serif}
 <div style="flex:3 1 320px;min-width:0;">
 <div style="font-family:'Anton',sans-serif;font-size:clamp(22px,4vw,30px);text-transform:uppercase;margin-bottom:14px;letter-spacing:0.005em;">O meni</div>
 <p style="font-size:18.5px;line-height:1.7;margin:0;max-width:640px;">Više od 20 godina djelujem u različitim domenama. Najveći trag sam (zasad) ostavio kao novinar, muzičar, promoter subkultura i autor.</p>
+<div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:24px;padding:16px 20px;max-width:640px;border:2px dashed oklch(9% 0 0);background:oklch(9% 0 0 / 0.03);">
+<span style="font-family:'Space Mono',monospace;font-size:13.5px;line-height:1.5;flex:1 1 240px;">Ekskluzivan tekst, odlične preporuke, sumirane vijesti - jednom mjesečno. Komunicirajmo direktno, izvan algoritma.</span>
+<a href="https://buddhaletina.beehiiv.com/subscribe" target="_blank" rel="noopener" style="flex-shrink:0;display:inline-flex;align-items:center;gap:8px;background:#e0263b;color:oklch(99% 0.002 90);text-decoration:none;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;padding:12px 20px;border:2px solid oklch(9% 0 0);box-shadow:3px 3px 0 oklch(9% 0 0);transform:rotate(-0.6deg);transition:transform 0.15s, box-shadow 0.15s;" onmouseover="this.style.transform='rotate(0deg) translate(-2px,-2px)';this.style.boxShadow='5px 5px 0 oklch(9% 0 0)';" onmouseout="this.style.transform='rotate(-0.6deg)';this.style.boxShadow='3px 3px 0 oklch(9% 0 0)';">✉ Pretplata na NJUZETER</a>
 </div>
-</div>
-
-<div style="padding:44px 40px;border-top:2px dashed oklch(9% 0 0);">
-<div style="font-family:'Anton',sans-serif;font-size:clamp(22px,4vw,30px);text-transform:uppercase;margin-bottom:6px;">Depeše</div>
-<div style="font-family:'PT Serif',serif;font-style:italic;font-size:14px;opacity:0.6;margin-bottom:22px;">Depeše, bilješke i usputne objave.</div>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;">
-<sc-for list="{{ posts }}" as="d" hint-placeholder-count="6">
-<div style="display:flex;flex-direction:column;gap:10px;padding:18px;border:2px dashed oklch(9% 0 0 / 0.55);background:oklch(99% 0.002 90);box-shadow:4px 4px 0 oklch(9% 0 0 / 0.12);transform:rotate({{ d.rot }}deg);">
-<div style="display:flex;flex-direction:column;gap:8px;">
-<div style="font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;opacity:0.6;letter-spacing:0.02em;">[ {{ d.date }} ] {{ d.tag }}</div>
-<div style="font-family:'Anton',sans-serif;font-size:24px;text-transform:uppercase;letter-spacing:0.01em;">{{ d.title }}</div>
-</div>
-<p style="margin:0;font-size:15px;line-height:1.55;">{{ d.text }}</p>
-<a href="{{ d.link }}" target="_blank" rel="noopener" style="align-self:flex-start;font-family:'Space Mono',monospace;font-weight:700;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;text-decoration:none;color:{{ accentColor }};text-shadow:0 0 5px,0 0 14px;animation:{{ linkFlashAnim }};">{{ d.linkLabel }} »</a>
-</div>
-</sc-for>
 </div>
 </div>
 
@@ -128,7 +123,7 @@ class Component extends DCLogic {
     links: [
       { label: 'INSTAGRAM', handle: '@trkadzija', url: 'https://instagram.com/trkadzija' },
       { label: 'FACEBOOK', handle: 'buddhaletina', url: 'https://www.facebook.com/buddhaletina' },
-      { label: 'BLUESKY', handle: 'arnelsaric.com', url: 'https://mu.social/profile/arnelsaric.com' },
+      { label: 'BLUESKY', handle: 'arnel.eurosky.social', url: 'https://mu.social/profile/arnel.eurosky.social' },
       { label: 'MASTODON', handle: '@sharan@metalhead.club', url: 'https://metalhead.club/@sharan' },
       { label: 'BANDCAMP', handle: 'sharan.bandcamp.com', url: 'https://sharan.bandcamp.com' },
     ],
