@@ -33,20 +33,6 @@ body{margin:0;background:#fcfcfa;font-family:system-ui,sans-serif}
 .nav-link{color:oklch(9% 0 0);text-decoration:none;}
 .nav-link:hover{color:#e0263b;}
 </style>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  if (/(^|\.)arnelsaric\.com$/.test(location.hostname)) {
-    document.querySelectorAll('a[href]').forEach(function (a) {
-      var href = a.getAttribute('href');
-      if (/\.dc(\.html)?$/.test(href)) {
-        a.setAttribute('href', '/' + href.replace(/\.dc(\.html)?$/, ''));
-      } else if (href === 'index.html') {
-        a.setAttribute('href', '/');
-      }
-    });
-  }
-});
-</script>
 <!-- Privacy-friendly analytics by Plausible -->
 <script async src="https://plausible.io/js/pa-ERoZCx1njDc45qK0ya8rc.js"></script>
 <script>
@@ -66,11 +52,11 @@ document.addEventListener('DOMContentLoaded', function () {
 <div style="display:inline-block;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;border:1px solid oklch(9% 0 0);padding:4px 14px;margin-bottom:22px;transform:rotate(-1.2deg);">POZDRAV, JA SAM...</div>
 <h1 style="font-family:'Anton',Impact,sans-serif;font-size:clamp(40px,9vw,100px);line-height:0.92;margin:0;text-transform:uppercase;letter-spacing:0.005em;transform:rotate(-1deg);text-shadow:4px 4px 0 oklch(9% 0 0 / 0.12);">Arnel Šarić<br>Sharan</h1>
 <div style="margin-top:24px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:0.06em;text-transform:uppercase;">
-<a href="muzicar.dc.html" class="nav-link">[ Muzičar ]</a>
-<a href="promoter.dc.html" class="nav-link">[ Promoter Subkultura ]</a>
-<a href="autor.dc.html" class="nav-link">[ Autor ]</a>
-<a href="novinar.dc.html" class="nav-link">[ Novinar ]</a>
-<a href="sad.dc.html" class="nav-link">[ Status ]</a>
+<a href="muzicar.html" class="nav-link">[ Muzičar ]</a>
+<a href="promoter.html" class="nav-link">[ Promoter Subkultura ]</a>
+<a href="autor.html" class="nav-link">[ Autor ]</a>
+<a href="novinar.html" class="nav-link">[ Novinar ]</a>
+<a href="sad.html" class="nav-link">[ Status ]</a>
 </div>
 </div>
 

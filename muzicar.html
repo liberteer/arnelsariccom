@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#fcfcfa;font-family:system-ui,sans-serif}
+.nav-link{color:oklch(9% 0 0);text-decoration:none;}
+.nav-link:hover{color:#e0263b;}
+.nav-link.active{color:#e0263b;}
+.back-link{color:oklch(9% 0 0);text-decoration:none;}
+.back-link:hover{color:#e0263b;}
+.email-link{color:#e0263b;text-decoration:none;}
+.email-link:hover{opacity:0.7;}
+</style>
+</helmet>
+<div data-screen-label="Muzičar — Arnel Šarić Sharan" style="min-height:100vh;width:100%;color:oklch(9% 0 0);font-family:'PT Serif',Georgia,serif;background:repeating-linear-gradient(0deg, oklch(9% 0 0 / 0.015) 0 1px, transparent 1px 3px), repeating-linear-gradient(90deg, oklch(9% 0 0 / 0.015) 0 1px, transparent 1px 3px), oklch(99% 0.002 90);">
+<div style="max-width:1280px;margin:0 auto;">
+
+<div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:10px 32px;border-bottom:2px dashed oklch(9% 0 0 / 0.5);font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.02em;">
+<span>arnelsaric.com</span>
+<a href="index.html" class="back-link">← NASLOVNA</a>
+</div>
+
+<div style="text-align:center;padding:58px 24px 0;">
+<div style="display:inline-block;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;border:1px solid oklch(9% 0 0);padding:4px 14px;margin-bottom:22px;transform:rotate(-1.2deg);">Arnel Šarić Sharan</div>
+<h1 style="font-family:'Anton',Impact,sans-serif;font-size:clamp(40px,9vw,100px);line-height:0.92;margin:0;text-transform:uppercase;letter-spacing:0.005em;transform:rotate(-1deg);text-shadow:4px 4px 0 oklch(9% 0 0 / 0.12);">Muzičar</h1>
+<p style="max-width:660px;margin:26px auto 0;font-size:18px;line-height:1.7;">Oksimoron je bilo ime prvog benda u kojem sam zasvirao. Bila je to prva stepenica u muzičkom stvaralaštvu koje traje i danas. Ovo je (nepotpun) spisak izdanja, šarenilo žanrova i izraza.</p>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;padding:28px 24px 0;font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:0.06em;text-transform:uppercase;">
+<a href="muzicar.html" class="nav-link active">[ Muzičar ]</a>
+<a href="promoter.html" class="nav-link">[ Promoter Subkultura ]</a>
+<a href="autor.html" class="nav-link">[ Autor ]</a>
+<a href="novinar.html" class="nav-link">[ Novinar ]</a>
+<a href="sad.html" class="nav-link">[ Status ]</a>
+</div>
+
+<div style="padding:44px 24px 8px;">
+<div style="font-family:'Anton',sans-serif;font-size:clamp(22px,4vw,30px);text-transform:uppercase;margin-bottom:6px;">Diskografija</div>
+<div style="font-family:'Space Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:0.06em;opacity:0.5;">vrsta · format · godina · kuća</div>
+</div>
+
+<div style="padding:8px 24px 16px;max-width:900px;">
+<sc-for list="{{ bands }}" as="band" hint-placeholder-count="4">
+<div style="padding:30px 0;border-top:2px dashed oklch(9% 0 0 / 0.35);">
+<div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
+<div style="font-family:'Anton',sans-serif;font-size:clamp(22px,3.2vw,30px);text-transform:uppercase;">{{ band.name }}</div>
+<span style="font-family:'Space Mono',monospace;font-size:11px;opacity:0.55;">{{ band.yearRange }}</span>
+</div>
+<p style="font-size:15.5px;line-height:1.65;margin:0 0 18px;max-width:680px;">{{ band.description }}</p>
+<sc-for list="{{ band.releases }}" as="r" hint-placeholder-count="3">
+<div style="padding:10px 0;border-top:1px dashed oklch(9% 0 0 / 0.18);">
+<div style="font-weight:700;font-size:15px;">{{ r.title }}</div>
+<div style="font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.03em;opacity:0.6;margin-top:3px;">
+<span style="font-weight:{{ r.typeWeight }};">{{ r.type }}</span><span style="text-transform:none;">{{ r.typeNote }}</span><span>{{ r.restMeta }}</span>
+</div>
+</div>
+</sc-for>
+</div>
+</sc-for>
+</div>
+
+<div style="padding:8px 24px 16px;max-width:900px;">
+<div style="padding:30px 0;border-top:2px dashed oklch(9% 0 0 / 0.35);">
+<div style="font-family:'Anton',sans-serif;font-size:clamp(22px,3.2vw,30px);text-transform:uppercase;margin-bottom:8px;">Gostovanja</div>
+<p style="font-size:15.5px;line-height:1.65;margin:0 0 18px;max-width:680px;">Ponekad me sjajni muzičari zovu da gostujem na njihovim izdanjima.</p>
+<sc-for list="{{ guestAppearances }}" as="g" hint-placeholder-count="2">
+<div style="padding:10px 0;border-top:1px dashed oklch(9% 0 0 / 0.18);">
+<div style="font-weight:700;font-size:15px;">{{ g.title }}</div>
+<div style="font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.03em;opacity:0.6;margin-top:3px;">{{ g.meta }}</div>
+</div>
+</sc-for>
+</div>
+
+<div style="padding:30px 0 44px;border-top:2px dashed oklch(9% 0 0 / 0.35);">
+<div style="font-family:'Anton',sans-serif;font-size:clamp(22px,3.2vw,30px);text-transform:uppercase;margin-bottom:14px;">Spisak Svih Projekata</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px;font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:0.03em;">
+<sc-for list="{{ allProjects }}" as="p" hint-placeholder-count="10">
+<span>[ {{ p }} ]</span>
+</sc-for>
+</div>
+</div>
+</div>
+
+<div style="padding:24px 40px;border-top:2px dashed oklch(9% 0 0);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;font-family:'Space Mono',monospace;font-size:11px;">
+<span>© 2026 ARNEL ŠARIĆ SHARAN — PRAVA? KOJA PRAVA?</span>
+<a href="mailto:sharan@onajkojikuca.com" class="email-link" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;letter-spacing:0.05em;text-transform:uppercase;">
+<span style="font-size:16px;">✉</span><span>PIŠI MI</span>
+</a>
+</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+function row(title, type, format, year, label, typeNote) {
+  return { title: title, type: type, format: format, year: year, label: label, typeNote: typeNote || '' };
+}
+
+class Component extends DCLogic {
+  state = {
+    groups: [
+      { name: 'POPIK', yearRangeOverride: '2014', description: 'Trenutno moj jedini aktivan bend. Sviramo hardcore punk sa dozom svega što nosimo u sebi i izazivamo nerede od 2014. godine.', rows: [
+        row('Demo','demo','digital','2014','samizdat'),
+        row('Uspavanke za Olenu P.','album','digital / kaseta','2016','samizdat / Death Plagues Productions'),
+        row('Tri nacije','singl','digital','2022','samizdat'),
+        row('Ubleha','EP','digital','2023','samizdat'),
+        row('Brzi i grozni','album','digital / kaseta','2025','samizdat'),
+      ]},
+      { name: 'Snake Eater', yearRangeOverride: '2010–2025', description: "Najbolji rock'n'roll bend. Njihove riječi, ali meni se teško ne složiti. Nakon 15 ljeta rada se nisu ugasili, već izgorili 2025. godine.", rows: [
+        row('Živi Otrov','live demo','digital','2011','samizdat'),
+        row('Dabar','album','digital / CD','2013 / 2018','samizdat / One Records'),
+        row('Idemo u Brazil','singl','digital','2014','samizdat'),
+        row('Motorhead','singl','digital','2017','samizdat'),
+        row('Sam Protiv Svih','album','digital / CD','2018','One Records'),
+        row('Sam Protiv Svih','singl','digital','2021','BHRT produkcija'),
+      ]},
+      { name: 'Motherpig', yearRangeOverride: '2004–2016', description: 'Moj prvi "pravi" bend, evolucija od noisecore projekta iz spavaće sobe do titule "bosanskog Amebixa" koju smo branili širom Evrope. Ugašen 2016. godine.', rows: [
+        row('Psychodellic Porn Hellucinations','split','CDr','2006','Parkinson Wankfist Pleasures'),
+        row('Splatter Fetish','split','CD','2007','Parkinson Wankfist Pleasures'),
+        row('APD For Dummies','split','CDr','2007','Parkinson Wankfist Pleasures'),
+        row('1428','split','kaseta','2007','Mental Abuse Records'),
+        row('Proleterian Union','split','digital / CDr','2008','Capeta Records'),
+        row('The Underdogs Philosophy','split','kaseta / CDr','2008','GETUPANDKILL Music / Keep Mincing Records'),
+        row('Ultimate Experience in Grueling Horror','split','CDr','2008','Parkinson Wankfist Pleasures'),
+        row('Four Horsemen of Noise','split','CDr','2009','NH.D.I.Y.ST'),
+        row('Embarassing Grind Fetish','split','kaseta','2009','La Hora De La Bestia, Zombie Fetus, Aggressive Valley'),
+        row("11. Bombardiranje New Yorka",'kompilacija','CDr','2006','Slušaj Najglasnije'),
+        row('Discarded Harmony','kompilacija','digital','2008','Avanti'),
+        row('Presuda Metal Fanzin','kompilacija','CDr','2008','Presuda Metal Fanzin'),
+        row('Svi u borbu za socijalnu pravdu','kompilacija','CDr','2009','Anarho Pank Savet BiH'),
+        row('EU Tour 2009','kompilacija','CDr','2009','samizdat'),
+        row('The Land of The Damned: A Tribute To Darkthrone','kompilacija','digital','2009','Deadknife Records'),
+        row('deCOMPosed','kompilacija','CD','2009','Shepherd of Rot Records'),
+        row("Noise Don't Cry",'kompilacija','kaseta','2013','AhorCassettes Records'),
+        row('LIVE!','DVD','DVDr','2009','samizdat'),
+        row("Good Ol' Laugh",'demo','digital / CDr','2005','samizdat'),
+        row('Unreleased Fuck-Ups','EP','digital','2007','samizdat'),
+        row('Fuck Maiden: A Real Live Three','live album','digital','2010','Podrum Music(k)'),
+        row('Nojev Let','album','digital / CD','2011','Beyond The Sun Records'),
+        row('Munich Classics','singl','digital','2012','samizdat'),
+        row('Savršeni Krug','album','digital','2013','samizdat'),
+        row('Amebix Balkans','kompilacija','digital / LP','2012','PMK Records'),
+        row('Cyborg Era','kompilacija','digital','2016','samizdat'),
+      ]},
+      { name: 'Valio Sanzini', description: 'Ako ne znaš ko je Valio Sanzini, nije moje da ti pojašnjavam. Album "uomo jugoslavo, macchina italiana" je i dalje neobjavljen u potpunosti. Kao i uvijek, sve zavisi od Sanzinija.', rows: [
+        row('uomo jugoslavo, macchina italiana','album','digital','2022','samizdat',' (nepotpuno objavljen)'),
+      ]},
+      { name: 'Heisenbeg', description: 'Rap projekt sa nekoliko singlova.', rows: [
+        row('16 Linija','singl','digital','2015','samizdat'),
+        row('Bus 14','singl','digital','2019','samizdat'),
+      ]},
+      { name: 'Belial Bradley → Synthelan', description: 'Moj izlet u svijet jednostavne synth muzike inspirisane horor filmovima i kraljevima synthwavea.', rows: [
+        row('Introducing... Belial Bradley','demo','digital','2014','samizdat'),
+        row('... Are We Not?','singl','digital','2014','samizdat'),
+        row('Framed Red: Giallo Cuts','EP','digital','2015','samizdat'),
+        row('Belial Is Dead','kompilacija','digital','2018','samizdat'),
+        row('Dobrinjski Davitelj','singl','digital','2019','samizdat'),
+      ]},
+      { name: "Topheth → Elephant's Foot", description: 'Moj zalazak u sferu gitarskog eksperimentisanja i drone zvuka.', rows: [
+        row('MLK','album','digital','2010','samizdat'),
+        row("Kalhu's Lullaby",'album','digital','2011','samizdat'),
+        row('Pazuzu','album','digital','2011','samizdat'),
+        row('ALO','album','digital','2012','samizdat'),
+        row('Discography 2010-2012','kompilacija','kaseta','2012','Strivve Recordings'),
+        row('Santísima Muerte','album','digital','2015','samizdat'),
+      ]},
+      { name: 'Zli Mrtvaci', description: 'Noisegrind eksperiment; jedino što je ostalo iza posljednje postave Motherpiga i proba prije raspada.', rows: [
+        row('NOISENONGRATA','EP','digital','2013','samizdat'),
+        row('Legio Mihi Nomen Est','album','digital','2013','samizdat'),
+      ]},
+      { name: 'Kroshe Poetski', description: 'Najkontroverzniji reper jučerašnje Bosne i Hercegovine, Kroshe Poetski je "vanzemaljac iz Požarevca inspirisan gangsta rapom i porn grindom". Teško je opisati Myspace eru nekome ko tada nije gazio tom besmislenošću.', rows: [
+        row('Grandiozni Lopovluk','EP','digital','2007',''),
+        row('Intergalaktički Pokvarenjak','album','digital','2008',''),
+        row('In Memorian','singl','digital','2008',''),
+        row('KRV ZNOJ SUZE SPERMA','EP','digital','2012',''),
+      ]},
+      { name: 'Arachnofobia Asylum', description: 'Moj zalazak u sferu elektronske buke.', rows: [
+        row('Digital Spiders From Outer Space','album','digital','2007','Smell The Stench'),
+        row('The Web','EP','digital','2008','Smell The Stench'),
+        row('Room 101','album','CDr','2009','Zvukovina'),
+        row('Pixelated Death','singl','digital','2009','samizdat'),
+      ]},
+      { name: 'Dobrinja 666', description: 'Projekt koji je trebao preživjeti dva singla: Tread, Preza i ja u old skul omažu naselju u kojem smo odrasli.', rows: [
+        row('Džegeru Miče','singl','digital','',''),
+        row("80's Dobrinja",'singl','digital','',''),
+      ]},
+    ],
+  };
+
+  renderVals() {
+    var TYPE_RANK = { album: 3, ep: 2, singl: 1 };
+    function maxYear(yearStr) {
+      var m = String(yearStr || '').match(/\d{4}/g);
+      if (!m) return null;
+      return Math.max.apply(null, m.map(Number));
+    }
+    var groups = this.state.groups.map(function (g, idx) {
+      var years = [];
+      g.rows.forEach(function (r) { var y = maxYear(r.year); if (y) years.push(y); });
+      var yearRange = g.yearRangeOverride || (years.length ? (Math.min.apply(null, years) === Math.max.apply(null, years) ? String(Math.min.apply(null, years)) : Math.min.apply(null, years) + '–' + Math.max.apply(null, years)) : '');
+      // latest release year + strongest type in that year, for cross-band ordering
+      var latestYear = years.length ? Math.max.apply(null, years) : -1;
+      var strongestAtLatest = 0;
+      g.rows.forEach(function (r) {
+        if (maxYear(r.year) === latestYear) {
+          var rank = TYPE_RANK[String(r.type).toLowerCase()] || 0;
+          if (rank > strongestAtLatest) strongestAtLatest = rank;
+        }
+      });
+      return { g: g, idx: idx, yearRange: yearRange, latestYear: latestYear, strongestAtLatest: strongestAtLatest };
+    });
+
+    var pinned = ['POPIK', 'Snake Eater', 'Motherpig', 'Valio Sanzini'];
+    var pinnedGroups = pinned.map(function (name) { return groups.find(function (x) { return x.g.name === name; }); }).filter(Boolean);
+    var restGroups = groups.filter(function (x) { return pinned.indexOf(x.g.name) === -1; });
+    restGroups.sort(function (a, b) {
+      if (b.latestYear !== a.latestYear) return b.latestYear - a.latestYear;
+      if (b.strongestAtLatest !== a.strongestAtLatest) return b.strongestAtLatest - a.strongestAtLatest;
+      return a.idx - b.idx;
+    });
+
+    var ordered = pinnedGroups.concat(restGroups);
+
+    var bands = ordered.map(function (entry) {
+      var g = entry.g;
+      var sortedRows = g.rows.slice().sort(function (a, b) {
+        var ya = maxYear(a.year), yb = maxYear(b.year);
+        if (ya === null && yb === null) return 0;
+        if (ya === null) return 1;
+        if (yb === null) return -1;
+        return yb - ya;
+      });
+      var releases = sortedRows.map(function (r) {
+        var isAlbum = String(r.type).toLowerCase() === 'album';
+        var restMetaParts = [r.format, r.year, r.label].filter(Boolean).join(' · ');
+        return {
+          title: r.title,
+          type: r.type,
+          typeWeight: isAlbum ? 700 : 400,
+          typeNote: r.typeNote || '',
+          restMeta: restMetaParts ? ' · ' + restMetaParts : '',
+        };
+      });
+      return { name: g.name, description: g.description, yearRange: entry.yearRange, releases: releases };
+    });
+
+    var extraProjects = ['Marginalac Margarin', 'Rapa Nui', 'Sabnack', 'Oksimoron'];
+    var allProjects = bands.map(function (b) { return b.name; }).concat(extraProjects);
+
+    var guestAppearances = [
+      { title: 'Ofsajd — Ministar', meta: 'album Generaciji · 2007.' },
+      { title: '[machina] — Filter', meta: 'kao Sabnack · album Drugi · 2007.' },
+      { title: 'Helltigers — Krv je moja satanska', meta: 'singl · 2010.' },
+    ];
+
+    return { bands: bands, allProjects: allProjects, guestAppearances: guestAppearances };
+  }
+}
+
+</script>
+</body>
+</html>
